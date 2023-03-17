@@ -11,7 +11,6 @@ namespace MalisGridNavigator
         public static string PluginDir;
         public static GridNavWindow Window;
         public static GridNav Grid;
-        private bool _test = false;
 
         public override void Run(string pluginDir)
         {
