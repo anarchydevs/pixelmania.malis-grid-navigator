@@ -81,9 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="JSON\Settings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Navmeshes\152.Navmesh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
