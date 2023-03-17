@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<root>
+	<View layout_borders="Rect(1,0,0,0)" view_layout="horizontal">
+		<Button name="Button" layout_borders="Rect(0,0,4,0)"/>
+		<TextView name="Text" font="SMALL" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
+	</View>
+</root>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<root>
+	<View>
+		<BitmapView name="Background">
+			<View view_layout="horizontal">
+				<BitmapView name="Icon" layout_borders="Rect(1,0,1,0)"/>
+				<HLayoutSpacer/>
+				<TextView layout_borders="Rect(0,0,12,0)" value="- Mali's Grid Navigator -" font="BOLD" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
+				<HLayoutSpacer/>
+			</View>
+			<View layout_borders="Rect(0,0,0,1)" name="GridGroupViewRoot"  v_alignment="TOP"  view_layout="horizontal">
+				<LeetHaxxor/>
+			</View>
+		</BitmapView>
+	</View>
+</root>
