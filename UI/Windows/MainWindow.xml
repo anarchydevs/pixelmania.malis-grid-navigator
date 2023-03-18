@@ -2,14 +2,33 @@
 <root>
 	<View>
 		<BitmapView name="Background">
-			<View view_layout="horizontal">
-				<BitmapView name="Icon" layout_borders="Rect(1,0,1,0)"/>
-				<HLayoutSpacer/>
-				<TextView layout_borders="Rect(0,0,12,0)" value="- Mali's Grid Navigator -" font="BOLD" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
-				<HLayoutSpacer/>
+			<View min_size="Point(-1, 20)" view_layout="horizontal">
+				<TextView layout_borders="Rect(0,2,0,0)" value="- Mali's Grid Navigator -" font="BOLD" color="0x00D5C64A" feature_flags="TVF_RENDER_SHADOW"/>
 			</View>
-			<View layout_borders="Rect(0,0,0,1)" name="GridGroupViewRoot"  v_alignment="TOP"  view_layout="horizontal">
-				<LeetHaxxor/>
+
+			<View view_layout="horizontal">
+				<View layout_borders="Rect(0,2,0,0)" min_size="Point(45, 180)">
+					<View name="FloorRoot">
+						<LeetHaxxor/>
+					</View>
+					<VLayoutSpacer/>
+					<BitmapView name="CancelBackground">
+						<Button min_size="Point(50,15)" name="Cancel">
+							<TextView layout_borders="Rect(11,3,0,0)"  min_size="Point(50,15)" value="Abort" font="SMALL" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
+						</Button>
+					</BitmapView>
+
+				</View>
+				<View h_alignment="LEFT" min_size="Point(174, 186)" v_alignment="TOP"  view_layout="horizontal">
+					<View name="ExitRoot">
+						<View min_size="Point(174, -1)" layout_borders="Rect(4,2,4,2)" view_layout="horizontal">
+							<TextView name="LeftTitle" font="SMALL" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
+							<HLayoutSpacer/>
+							<TextView name="RightTitle" font="SMALL" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
+						</View>
+						<LeetHaxxor/>
+					</View>
+				</View>
 			</View>
 		</BitmapView>
 	</View>

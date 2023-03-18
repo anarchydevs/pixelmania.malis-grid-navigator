@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<root>
+	<View>
+		<BitmapView name="Background">
+			<Button min_size="Point(50,15)" name="Button">
+				<TextView layout_borders="Rect(0,0,0,0)" min_size="Point(-1,14)" font="SMALL" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW" name="Text"/>
+			</Button>
+		</BitmapView>
+	</View>
+</root>

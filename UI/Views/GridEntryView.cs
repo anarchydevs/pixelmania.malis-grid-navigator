@@ -1,52 +1,62 @@
 ﻿using AOSharp.Common.GameData;
+using AOSharp.Core;
 using AOSharp.Core.UI;
-using static MalisGridNavigator.GridNavWindow;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MalisGridNavigator
 {
     public class GridEntryView
     {
         public View Root;
-        private View _view;
+        private View ExitButtonRoot;
         private TextView _textView;
-        private Button _button;
-        private GridExit _gridExit;
+        public List<ExitButtonView> ExitButtonView = new List<ExitButtonView>();
+        public List<BlankView> BlankView = new List<BlankView>();
 
-        public GridEntryView(View rootView, GridExit gridExitName)
+        public GridEntryView(KeyValuePair<GridExit, Dictionary<GridSide, GridExitInfo>> gridExitName)
         {
-            Root = rootView;
+            Root = View.CreateFromXml($"{Main.PluginDir}\\UI\\Views\\GridEntryView.xml");
 
-            _view = View.CreateFromXml($"{Main.PluginDir}\\UI\\Views\\GridEntryView.xml");
-            _gridExit = gridExitName;
+            if (Root.FindChild("Text", out _textView)) { _textView.Text = gridExitName.Key.ToString(); };
+            
+            if (Root.FindChild("ExitButtonRoot", out ExitButtonRoot)) {};
 
-            if (_view.FindChild("Text", out _textView)) { _textView.Text = gridExitName.ToString(); };
-          
-            if (_view.FindChild("Button", out _button)) 
+            if (Playfield.ModelIdentity.Instance == PlayfieldIds.FixerGrid)
             {
-                _button.SetAllGfx(Textures.RedCircle);
-                _button.Clicked = ButtonClick; 
-            };
+                var reversedGridInfo = gridExitName.Value.Reverse();
 
-            Root.AddChild(_view, true);
-            Root.FitToContents();
-        }
-
-        public void SetGfx(int id) => _button.SetAllGfx(id);
-
-        private void ButtonClick(object sender, ButtonBase e)
-        {
-            Main.Window.ResetGfx();
-            SetGfx(Textures.GreenCircle);
-            Main.Grid.SetExit(_gridExit);
-
-            Chat.WriteLine($"Destination set to:{_gridExit}");
-            Midi.Play("Click");
+                switch (reversedGridInfo.Count())
+                {
+                    case 1:
+                        BlankView.Add(new BlankView(ExitButtonRoot));
+                        ExitButtonView.Add(new ExitButtonView(ExitButtonRoot, new GridExitDestination { GridExit = gridExitName.Key, GridSide = reversedGridInfo.First().Key }));
+                        BlankView.Add(new BlankView(ExitButtonRoot));
+                        break;
+                    case 2:
+                        ExitButtonView.Add(new ExitButtonView(ExitButtonRoot, new GridExitDestination { GridExit = gridExitName.Key, GridSide = reversedGridInfo.First().Key }));
+                        BlankView.Add(new BlankView(ExitButtonRoot));
+                        ExitButtonView.Add(new ExitButtonView(ExitButtonRoot, new GridExitDestination { GridExit = gridExitName.Key, GridSide = reversedGridInfo.Last().Key }));
+                        break;
+                    case 3:
+                        foreach (var gridExitInfo in reversedGridInfo)
+                            ExitButtonView.Add(new ExitButtonView(ExitButtonRoot, new GridExitDestination { GridExit = gridExitName.Key, GridSide = gridExitInfo.Key }));
+                        break;
+                }
+            }
+            else
+            {
+                foreach (var gridExitInfo in gridExitName.Value)
+                    ExitButtonView.Add(new ExitButtonView(ExitButtonRoot, new GridExitDestination { GridExit = gridExitName.Key, GridSide = gridExitInfo.Key }));
+            }
         }
 
         public void Dispose()
         {
-            Root.RemoveChild(_view);
-            _view.Dispose();
+            foreach (ExitButtonView exitButtonView in ExitButtonView)
+                exitButtonView.Dispose();
+
+            Root.Dispose();
         }
     }
 }

@@ -70,8 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="FixerGridNav.cs" />
+    <Compile Include="Navigator.cs" />
     <Compile Include="GridNav.cs" />
-    <Compile Include="UI\Views\GridGroupView.cs" />
+    <Compile Include="UI\Views\BlankView.cs" />
+    <Compile Include="UI\Views\FloorView.cs" />
+    <Compile Include="UI\Views\ExitButtonView.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="UI\Views\GridEntryView.cs" />
     <Compile Include="UI\Windows\MainWindow.cs" />
@@ -84,6 +88,9 @@
     <None Include="Navmeshes\152.Navmesh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Navmeshes\4107.Navmesh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
@@ -94,19 +101,25 @@
     <Content Include="Sound\Click.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UI\Textures\002_RedCircle.png">
+    <Content Include="UI\Textures\001_GNRedCircle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UI\Textures\001_HeaderIcon.png">
+    <Content Include="UI\Textures\002_GNGreenCircle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UI\Textures\003_GreenCircle.png">
+    <Content Include="UI\Textures\003_GNBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UI\Textures\004_Background.png">
+    <Content Include="UI\Textures\004_GNButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UI\Views\GridGroupView.xml">
+    <Content Include="UI\Views\BlankView.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Views\FloorView.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Views\ExitButtonView.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\Views\GridEntryView.xml">

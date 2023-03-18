@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" standalone="yes"?>
 <root>
-	<View layout_borders="Rect(1,0,0,0)" view_layout="horizontal">
-		<Button name="Button" layout_borders="Rect(0,0,4,0)"/>
-		<TextView name="Text" font="SMALL" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
+	<View min_size="Point(170,14)" layout_borders="Rect(1,0,0,0)" view_layout="horizontal">
+		<View name="ExitButtonRoot" view_layout="horizontal">
+			<LeetHaxxor/>
+		</View>
+		<HLayoutSpacer/>
+		<TextView layout_borders="Rect(0,0,3,0)" name="Text" font="SMALL" color="0x00FFF1AC" feature_flags="TVF_RENDER_SHADOW"/>
 	</View>
 </root>

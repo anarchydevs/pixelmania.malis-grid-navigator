@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<root>
+	<View>
+		<Button layout_borders="Rect(2,0,0,0)" name="Button"/>
+	</View>
+</root>

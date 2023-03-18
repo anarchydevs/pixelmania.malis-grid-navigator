@@ -20,6 +20,6 @@ namespace MalisGridNavigator
             button.SetGfx(ButtonState.Raised, gfxId);
             button.SetGfx(ButtonState.Hover, gfxId);
             button.SetGfx(ButtonState.Pressed, gfxId);
-        } 
+        }
     }
 }
