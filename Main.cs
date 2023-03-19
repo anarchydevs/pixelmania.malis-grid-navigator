@@ -16,8 +16,6 @@ namespace MalisGridNavigator
         public static GridNav GridNav;
         public static FixerGridNav FixerGridNav;
 
-        private Vector3 curr;
-
         public override void Run(string pluginDir)
         {
             Chat.WriteLine("- Mali's Grid Navigator-", ChatColor.Gold);
@@ -28,12 +26,6 @@ namespace MalisGridNavigator
 
             GridNav = new GridNav(PlayfieldIds.Grid, GridExits, GridElevators);
             FixerGridNav = new FixerGridNav(PlayfieldIds.FixerGrid, FixerGridExits, FixerGridElevators);
-
-            Chat.RegisterCommand("savepos", (string command, string[] param, ChatWindow chatWindow) =>
-            {
-            });
-
-            Midi.Play("Alert");
         }
 
         public override void Teardown()
