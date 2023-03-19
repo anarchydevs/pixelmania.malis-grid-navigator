@@ -40,13 +40,5 @@ namespace MalisGridNavigator
         }
 
         public void ResetBackgroundColor() => Background.SetColor(0xFFFFFF);
-
-        public void Dispose()
-        {
-            foreach (var gridEntryView in GridEntryView)
-                gridEntryView.Dispose();
-
-            FloorRootView.Dispose();
-        }
     }
 }

@@ -19,7 +19,7 @@ namespace MalisGridNavigator
             StopDistance = 1f;
         }
 
-        protected override void OnUpdate(object sender, float e)
+        protected override void OnUpdateGn(object sender, float e)
         {
             if (CurrentExit.GridExit == GridExit.Unknown)
                 return;

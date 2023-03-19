@@ -18,10 +18,5 @@ namespace MalisGridNavigator
             ExitButtonRoot.AddChild(_localRoot, true);
             ExitButtonRoot.FitToContents();
         }
-
-        public void Dispose()
-        {
-            _localRoot.Dispose();
-        }
     }
 }

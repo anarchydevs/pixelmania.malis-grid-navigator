@@ -15,7 +15,7 @@ namespace MalisGridNavigator
 
         public GridNav(int pfId, Dictionary<GridExit, Dictionary<GridSide, GridExitInfo>> exits, Dictionary<Floor, Dictionary<ElevatorType, List<Vector3>>> elevators) : base(pfId, exits, elevators) { }
        
-        protected override void OnUpdate(object sender, float e)
+        protected override void OnUpdateGn(object sender, float e)
         {
             if (CurrentExit.GridExit == GridExit.Unknown)
                 return;

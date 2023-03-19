@@ -23,15 +23,15 @@ namespace MalisGridNavigator
             Elevators = elevators;
             Exits = exits;
 
-            Game.TeleportStarted += TeleportStarted;
-            Game.TeleportEnded += TeleportEnded;
+            Game.TeleportStarted += TeleportStartedGn;
+            Game.TeleportEnded += TeleportEndedGn;
 
             InitLoad();
         }
 
         protected abstract Floor GetCurrentFloor();
 
-        protected abstract void OnUpdate(object sender, float e);
+        protected abstract void OnUpdateGn(object sender, float e);
 
         public new void Halt()
         {
@@ -64,7 +64,7 @@ namespace MalisGridNavigator
 
         private void Load()
         {
-            Game.OnUpdate += OnUpdate;   
+            Game.OnUpdate += OnUpdateGn;   
             LoadNavmesh($"{Main.PluginDir}\\Navmeshes\\{PlayfieldId}.navmesh");
             Main.Window = new GridNavWindow("MalisGridNav", Exits, $"{Main.PluginDir}\\UI\\Windows\\MainWindow.xml");
             Main.Window.Show();
@@ -73,7 +73,7 @@ namespace MalisGridNavigator
 
         private void Unload()
         {
-            Game.OnUpdate -= OnUpdate;
+            Game.OnUpdate -= OnUpdateGn;
             LoadNavmesh(null);
             Main.Window.Dispose();
         }
@@ -92,7 +92,7 @@ namespace MalisGridNavigator
             Load();
         }
 
-        private void TeleportStarted(object sender, EventArgs e)
+        private void TeleportStartedGn(object sender, EventArgs e)
         {
             if (Playfield.ModelIdentity.Instance != PlayfieldId)
                 return;
@@ -101,7 +101,7 @@ namespace MalisGridNavigator
             Unload();
         }
 
-        private void TeleportEnded(object sender, EventArgs e) => InitLoad();
+        private void TeleportEndedGn(object sender, EventArgs e) => InitLoad();
     }
 
     public class GridExitDestination

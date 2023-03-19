@@ -46,10 +46,5 @@ namespace MalisGridNavigator
 
             Midi.Play("Click");
         }
-
-        public void Dispose()
-        {
-            _localRoot.Dispose();
-        }
     }
 }

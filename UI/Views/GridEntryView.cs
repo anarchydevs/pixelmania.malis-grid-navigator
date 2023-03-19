@@ -50,13 +50,5 @@ namespace MalisGridNavigator
                     ExitButtonView.Add(new ExitButtonView(ExitButtonRoot, new GridExitDestination { GridExit = gridExitName.Key, GridSide = gridExitInfo.Key }));
             }
         }
-
-        public void Dispose()
-        {
-            foreach (ExitButtonView exitButtonView in ExitButtonView)
-                exitButtonView.Dispose();
-
-            Root.Dispose();
-        }
     }
 }

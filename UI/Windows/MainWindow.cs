@@ -106,17 +106,13 @@ namespace MalisGridNavigator
 
         public void Dispose()
         {
-            foreach (var gridEntryView in _viewCache.GridEntryView)
-                gridEntryView.Dispose();
-
-            foreach (var floorView in _viewCache.FloorView)
-                floorView.Dispose();
+            if (!Window.IsValid)
+                return;
 
             _viewCache.GridEntryView.Clear();
             _viewCache.FloorView.Clear();
 
-            if (Window.IsValid)
-                Window.Close();
+            Window.Close();
         }
 
         public class Views
