@@ -67,8 +67,6 @@ namespace MalisGridNavigator
                 FixerGridNav.SetCurrentExit(new GridExitDestination { GridExit = exit, GridSide = side });
             });
 
-
-            Chat.WriteLine(Settings.AutoLoadUi);
             GridNav = new GridNav(PlayfieldIds.Grid, GridExits, GridElevators);
             FixerGridNav = new FixerGridNav(PlayfieldIds.FixerGrid, FixerGridExits, FixerGridElevators);
         }
