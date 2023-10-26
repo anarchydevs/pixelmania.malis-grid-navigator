@@ -66,8 +66,13 @@ namespace MalisGridNavigator
         {
             Game.OnUpdate += OnUpdateGn;   
             LoadNavmesh($"{Main.PluginDir}\\Navmeshes\\{PlayfieldId}.navmesh");
-            Main.Window = new GridNavWindow("MalisGridNav", Exits, $"{Main.PluginDir}\\UI\\Windows\\MainWindow.xml");
-            Main.Window.Show();
+
+            if (Main.Settings.AutoLoadUi)
+            {
+                Main.Window = new GridNavWindow("MalisGridNav", Exits, $"{Main.PluginDir}\\UI\\Windows\\MainWindow.xml");
+                Main.Window.Show();
+            }
+
             Set(this);
         }
 
@@ -75,7 +80,9 @@ namespace MalisGridNavigator
         {
             Game.OnUpdate -= OnUpdateGn;
             LoadNavmesh(null);
-            Main.Window.Dispose();
+
+            if (Main.Settings.AutoLoadUi)
+                Main.Window.Dispose();
         }
 
         private Vector3 GetClosestElevator(Floor currentFloor, ElevatorType elevatorType)

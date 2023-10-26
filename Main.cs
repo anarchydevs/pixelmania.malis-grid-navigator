@@ -15,14 +15,17 @@ namespace MalisGridNavigator
 
         public static GridNav GridNav;
         public static FixerGridNav FixerGridNav;
+        public static Settings Settings;
 
         public override void Run(string pluginDir)
         {
             Chat.WriteLine("- Mali's Grid Navigator-", ChatColor.Gold);
 
             PluginDir = pluginDir;
+            Settings = Settings.Load($"{PluginDir}\\JSON\\Settings.json");
 
-            Utils.LoadCustomTextures($"{PluginDir}\\UI\\Textures\\", 1430135);
+            if (Settings.AutoLoadUi)
+                Utils.LoadCustomTextures($"{PluginDir}\\UI\\Textures\\", 1430135);
 
             Chat.RegisterCommand("setgridexit", (string command, string[] param, ChatWindow chatWindow) =>
             {
@@ -65,6 +68,7 @@ namespace MalisGridNavigator
             });
 
 
+            Chat.WriteLine(Settings.AutoLoadUi);
             GridNav = new GridNav(PlayfieldIds.Grid, GridExits, GridElevators);
             FixerGridNav = new FixerGridNav(PlayfieldIds.FixerGrid, FixerGridExits, FixerGridElevators);
         }
@@ -72,7 +76,9 @@ namespace MalisGridNavigator
         public override void Teardown()
         {
             Midi.TearDown();
-            Window.Dispose();
+
+            if (Settings.AutoLoadUi)
+                Window.Dispose();
         }
 
         public static Dictionary<GridExit, Dictionary<GridSide, GridExitInfo>> GridExits = new Dictionary<GridExit, Dictionary<GridSide, GridExitInfo>>()

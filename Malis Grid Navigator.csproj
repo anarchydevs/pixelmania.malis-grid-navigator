@@ -73,6 +73,7 @@
     <Compile Include="FixerGridNav.cs" />
     <Compile Include="Navigator.cs" />
     <Compile Include="GridNav.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="UI\Views\BlankView.cs" />
     <Compile Include="UI\Views\FloorView.cs" />
     <Compile Include="UI\Views\ExitButtonView.cs" />
@@ -85,6 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="JSON\Settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Navmeshes\152.Navmesh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
