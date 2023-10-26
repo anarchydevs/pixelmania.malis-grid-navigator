@@ -20,9 +20,50 @@ namespace MalisGridNavigator
         {
             Chat.WriteLine("- Mali's Grid Navigator-", ChatColor.Gold);
 
-            PluginDir = pluginDir; 
+            PluginDir = pluginDir;
 
             Utils.LoadCustomTextures($"{PluginDir}\\UI\\Textures\\", 1430135);
+
+            Chat.RegisterCommand("setgridexit", (string command, string[] param, ChatWindow chatWindow) =>
+            {
+                if (param.Length != 1)
+                    return;
+
+                if (!Enum.TryParse(param[0], true, out GridExit exit) || !GridExits.TryGetValue(exit, out var gridExits))
+                {
+                    Chat.WriteLine("Couldn't find given grid exit");
+                    return;
+                }
+
+                GridNav.SetCurrentExit(new GridExitDestination { GridExit = exit, GridSide = GridSide.None });
+            });
+
+            Chat.RegisterCommand("setfgridexit", (string command, string[] param, ChatWindow chatWindow) =>
+            {
+                if (param.Length != 2)
+                    return;
+
+                if (!Enum.TryParse(param[0], true, out GridExit exit) || !FixerGridExits.TryGetValue(exit, out var gridExits))
+                {
+                    Chat.WriteLine("Couldn't find given grid exit");
+                    return;
+                }
+
+                if (!Enum.TryParse(param[1], true, out GridSide side))
+                {
+                    Chat.WriteLine("Invalid grid side.");
+                    return;
+                }
+
+                if (!gridExits.TryGetValue(side, out var gridExitInfo))
+                {
+                    Chat.WriteLine("Couldn't find given grid exit info.");
+                    return;
+                }
+
+                FixerGridNav.SetCurrentExit(new GridExitDestination { GridExit = exit, GridSide = side });
+            });
+
 
             GridNav = new GridNav(PlayfieldIds.Grid, GridExits, GridElevators);
             FixerGridNav = new FixerGridNav(PlayfieldIds.FixerGrid, FixerGridExits, FixerGridElevators);
